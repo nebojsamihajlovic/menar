@@ -1,19 +1,18 @@
 package com.nebojsamihajlovic.menthalarithmetic;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
-import android.os.CountDownTimer;
-import android.preference.PreferenceFragment;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -53,11 +52,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.settings_id:
+                // Intent intent = new Intent(HomePage.this, Setting.class);
+                // startActivity(intent);
+                // finish();
+
+                Toast.makeText(this, "You pressed the Setting!", Toast.LENGTH_LONG).show();
+
+                break;
+
+
+            case R.id.about_us_id:
+
+                Toast.makeText(this, "Author - Mihajlovic Nebojsa", Toast.LENGTH_LONG).show();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void createDigitsArray() {
         digitsArray = new short[DIGITS_NUMBER];
 
         Random random = new Random();
-        int randomNumber = 0;
+        int randomNumber;
         short counter = 0;
 
         while (counter < DIGITS_NUMBER) {
