@@ -6,8 +6,10 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.CountDownTimer;
 import android.preference.PreferenceFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +17,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int DIGITS_NUMBER = 15;
     private static final int SPEED = 1500;
@@ -41,6 +43,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         countDownTimer = new MyCountDownTimer(startTime, interval);
 
         text.setText("M e n a r");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+
+        return true;
     }
 
     private void createDigitsArray() {
